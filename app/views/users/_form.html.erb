@@ -1,0 +1,49 @@
+<%= form_for @user, url: {action: "create"}, html: {class: "form-horizontal center"} do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="form-group">
+
+    <div class="field">
+      <%= f.label :first_name, class: "col-md-2 control-label" %>
+      <div class="col-md-10"><%= f.text_field :first_name, class: "form-control", :required => true %><br></div>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name, class: "col-md-2 control-label"  %>
+      <div class="col-md-10"><%= f.text_field :last_name, class: "form-control", :required => true%><br></div>
+    </div>
+
+    <div class="field">
+      <%= f.label :email, class: "col-md-2 control-label"  %>
+      <div class="col-md-10"><%= f.text_field :email, class: "form-control", type: "email", :required => true %><br></div>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, class: "col-md-2 control-label"  %>
+      <div class="col-md-10"><%= f.text_field :password, class: "form-control", :required => true, type: "password" %><br></div>
+    </div>
+
+    <div class="field">
+      <%= f.label :role, class: "col-md-2 control-label"  %>
+      <div class="col-md-10"><%= f.text_field :role, class: "form-control" %><br></div>
+    </div>
+
+    <div class="field">
+      <%= f.label :admin, class: "col-md-2 control-label"  %>
+      <div class="col-md-10"><%= f.check_box :admin, class: "form-control" %><br></div>
+    </div>
+
+    <div class="col-md-12 text-center">
+      <div class = "btn-group btn-group-justified">
+      <div class="btn-group"><%= f.submit "Create", class: 'btn btn-primary btn-group' %></div>
+      <% end %>

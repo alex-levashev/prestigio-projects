@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Type:</strong>
-  <%= @task.type %>
+  <%= @task.tasktype %>
 </p>
 
 <p>
@@ -15,5 +13,24 @@
   <%= @task.text %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<p>
+  <strong>Assignee:</strong>
+  <%= @task.assignee %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @task.starttime.strftime('%Y-%m-%d') %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @task.endtime.strftime('%Y-%m-%d') %>
+</p>
+
+<div class="col-md-12 text-center">
+  <div class = "btn-group btn-group-justified">
+    <div class="btn-group"><%= link_to 'Edit', edit_task_path(@task), :class => "btn btn-primary" %></div>
+    <div class="btn-group"><%= link_to 'Back', tasks_path, :class => "btn btn-primary" %></div>
+  </div>
+</div>

@@ -1,26 +1,32 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Tasks</h1>
 
-<table>
+<table class="table">
   <thead>
-    <tr>
-      <th>Type</th>
-      <th>Label</th>
-      <th>Text</th>
-      <th colspan="3"></th>
+    <tr class="active">
+      <th class="text-center">Type</th>
+      <th class="text-center">Label</th>
+      <th class="text-center">Text</th>
+      <th class="text-center">Author</th>
+      <th class="text-center">Assignee</th>
+      <th class="text-center">Start Date</th>
+      <th class="text-center">End Date</th>
+      <th class="text-center" colspan="3">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.type %></td>
+        <td><%= task.tasktype %></td>
         <td><%= task.label %></td>
         <td><%= task.text %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= task.author_from_id_to_name %></td>
+        <td><%= task.assignee_from_id_to_name %></td>
+        <td><%= task.starttime.strftime('%Y-%m-%d') %></td>
+        <td><%= task.endtime.strftime('%Y-%m-%d') %></td>
+        <td><%= link_to 'Show', task, :class => "btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_task_path(task), :class => "btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_task_path, :class => "btn btn-primary" %>

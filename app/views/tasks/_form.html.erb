@@ -1,6 +1,7 @@
-<%= form_for(@task) do |f| %>
+<%= form_for @task, url: {action: "create"}, html: {class: "form-horizontal center"} do |f| %>
   <% if @task.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
@@ -10,20 +11,39 @@
       </ul>
     </div>
   <% end %>
-
+  
+<div class="form-group">
+  
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.label :tasktype, class: "col-md-2 control-label" %>
+    <div class="col-md-10"><%= f.text_field :tasktype, class: "form-control", :required => true %><br></div>
   </div>
+  
   <div class="field">
-    <%= f.label :label %><br>
-    <%= f.text_field :label %>
+    <%= f.label :label, class: "col-md-2 control-label" %>
+    <div class="col-md-10"><%= f.text_field :label, class: "form-control", :required => true %><br></div>
   </div>
+  
   <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_field :text %>
+    <%= f.label :text, class: "col-md-2 control-label" %>
+    <div class="col-md-10"><%= f.text_field :text, class: "form-control", :required => true %><br></div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+  <div class="field">
+    <%= f.label :assignee, class: "col-md-2 control-label" %>
+    <div class="col-md-10"><%= f.collection_select :assignee, User.all, :id, :last_name, {prompt: "Select assignee"}, {class: "form-control", :required => true} %><br></div>
   </div>
+  
+  <div class="field">
+    <%= f.label :starttime, class: "col-md-2 control-label" %>
+    <div class="col-md-10"><%= f.date_field :starttime, :value => Time.now.strftime('%Y-%m-%d'), class: "form-control", :required => true %><br></div>
+  </div>
+  
+  <div class="field">
+    <%= f.label :endtime, class: "col-md-2 control-label" %>
+    <div class="col-md-10"><%= f.date_field :endtime, :value => Time.now.strftime('%Y-%m-%d'), class: "form-control", :required => true %><br></div>
+  </div>
+  
+    <%= f.submit "Create", class: 'btn btn-primary btn-group' %>
+    
 <% end %>

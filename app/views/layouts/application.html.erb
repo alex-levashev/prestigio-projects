@@ -9,17 +9,22 @@
 <body>
 <div class = "col-sm-12">
 <div class="page-header">
-  <h1>Prestigio Task Planning System</h1>      
-
-  <div style="position: absolute; top: 1%; right: 1%; width: 20%; text-align:right;">
+  <h1>Prestigio Task Planning System</h1>
+  <div class="well well-sm text-center">
     <% if user_signed_in? %>
-      Logged as <b><%= current_user.first_name + " " + current_user.last_name %></b><br>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      Logged as <b><%= current_user.first_name + " " + current_user.last_name %></b>,
+      <%= link_to('click to logout', destroy_user_session_path, :method => :delete) %>
     <% else %>
       <%= link_to('Login', new_user_session_path)  %>
     <% end %>
   </div>
 </div>
+<% if flash[:notice] %>
+<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:notice] %></div>
+<% end %>
+<% if flash[:error] %>
+<div class="alert alert-error"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:error] %></div>
+<% end %>
 <%= yield %>
 </div>
 

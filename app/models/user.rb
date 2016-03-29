@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
     user = self.id
     Task.where(:assignee => user)
   end
-  
+
 end

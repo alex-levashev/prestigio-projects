@@ -1,25 +1,31 @@
 class Task < ActiveRecord::Base
   belongs_to :user
-  
+  validate :check_user_availability
+
   def author_from_id_to_name
     id = self.user_id
     user = User.find_by_id(id)
     user.first_name + " " + user.last_name
   end
-  
+
   def assignee_from_id_to_name
     id = self.assignee
     user = User.find_by_id(id)
     user.first_name + " " + user.last_name
   end
-  
+
+  private
+
   def check_user_availability
     id = self.assignee
-    timerange = (self.starttime..self.endtime)
+    timerange = (self.starttime.to_datetime..self.endtime.to_datetime)
     User.find_by_id(id).alltasks.each do |task|
-      timerange_user = task.starttime..task.endtime
-      return true if timerange_user.include?(timerange)
+      timerange_user = task.starttime.to_datetime..task.endtime.to_datetime
+      if timerange_user.include?(timerange)
+        errors.add(:user, "is busy. Change start and end time for the task")
+        return false
+      end
     end
-    return false
+    return true
   end
 end

@@ -25,6 +25,9 @@
 <% if flash[:error] %>
 <div class="alert alert-error"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:error] %></div>
 <% end %>
+<% if flash[:alert] %>
+<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:alert] %></div>
+<% end %>
 <%= yield %>
 </div>
 

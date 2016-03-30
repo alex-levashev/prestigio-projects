@@ -5,7 +5,12 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
-    respond_with(@tasks)
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: json_payload }
+      end
+
+    # respond_with(@tasks)
   end
 
   def show
@@ -50,6 +55,45 @@ class TasksController < ApplicationController
 
     def task_params
       params.require(:task).permit(:tasktype, :label, :text, :assignee, :starttime, :endtime)
+    end
+
+    # def json_payload
+    #   @tasks.map do |task|
+    #     {
+    #       "startDate" => task.starttime.strftime("%Y,%m,%d"),
+    #       "endDate" => task.endtime.strftime("%Y,%m,%d"),
+    #       "headline" => task.label,
+    #       "text" => task.text,
+    #       "asset" => {"media" => task.label}
+    #     }
+    #   end
+    # end
+
+    def json_payload
+      {
+    "timeline" =>
+    {
+        "headline"=>"Prestigio Task System Timeline",
+        "type"=>"default",
+        "text"=>"<p>Simple task tracking system</p>",
+        "date"=> @tasks.map { |task|
+          {
+            "startDate" => task.starttime.strftime("%Y,%m,%d,%H,%M"),
+            "endDate" => task.endtime.strftime("%Y,%m,%d,%H,%M"),
+            "headline" => task.assignee_from_id_to_name + '  (' + task.label + ')',
+            "text" => task.text
+          }
+        },
+
+        "era"=> [
+            {
+                "startDate"=>"2016,01,01",
+                "endDate"=>"2017,01,01"
+            }
+
+        ]
+    }
+}
     end
 
 end

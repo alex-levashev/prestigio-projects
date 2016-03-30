@@ -27,6 +27,7 @@ gem 'devise'
 gem 'will_paginate'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
+gem 'timelineJS3-rails', '~> 1.0.0'
 
 
 # Use ActiveModel has_secure_password

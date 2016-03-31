@@ -5,12 +5,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: json_payload }
-      end
-
-    # respond_with(@tasks)
+    respond_with(@tasks)
   end
 
   def show
@@ -38,7 +33,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    byebug
     @task.update(task_params)
     respond_with(@task)
   end
@@ -48,6 +42,54 @@ class TasksController < ApplicationController
     respond_with(@task)
   end
 
+  def data
+   events = Task.all
+   render :json => events.map {|event| {
+              :id => event.id,
+              :start_date => event.starttime.to_formatted_s(:db),
+              :end_date => event.endtime.to_formatted_s(:db),
+              :text => event.label
+          }}
+
+  end
+
+  def db_action
+     mode = params["!nativeeditor_status"]
+     id = params["id"]
+     start_date = params["starttime"]
+     end_date = params["endtime"]
+     text = params["label"]
+
+     case mode
+       when "inserted"
+         event = Task.create :start_date => start_date,
+                             :end_date => end_date,
+                             :text => text,
+                             :tasktype => 'test_tasktype',
+                             :label => 'test_label'
+         tid = event.id
+
+       when "deleted"
+         Task.find(id).destroy
+         tid = id
+
+       when "updated"
+         event = Task.find(id)
+         event.start_date = start_date
+         event.end_date = end_date
+         event.text = text
+         event.save
+         tid = id
+     end
+
+     render :json => {
+                :type => mode,
+                :sid => id,
+                :tid => tid,
+            }
+   end
+
+
   private
     def set_task
       @task = Task.find(params[:id])
@@ -56,18 +98,6 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:tasktype, :label, :text, :assignee, :starttime, :endtime)
     end
-
-    # def json_payload
-    #   @tasks.map do |task|
-    #     {
-    #       "startDate" => task.starttime.strftime("%Y,%m,%d"),
-    #       "endDate" => task.endtime.strftime("%Y,%m,%d"),
-    #       "headline" => task.label,
-    #       "text" => task.text,
-    #       "asset" => {"media" => task.label}
-    #     }
-    #   end
-    # end
 
     def json_payload
       {

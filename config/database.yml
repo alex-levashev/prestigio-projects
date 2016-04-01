@@ -25,36 +25,27 @@
 #   database: db/production.sqlite3
 
 # #######
-#
-# development:
-#   adapter: postgresql
-#   encoding: utf8
-#   database: project_development
-#   pool: 5
-#   username: user
-#   password:
-#
-# test: &TEST
-#   adapter: postgresql
-#   encoding: utf8
-#   database: project_test
-#   pool: 5
-#   username: user
-#   password:
-#
-# production:
-#   adapter: postgresql
-#   encoding: utf8
-#   database: project_production
-#   pool: 5
-#   username: user
-#   password:
 
-# #######
-
-default: &default
+development:
   adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  encoding: utf8
+  database: project_development
   pool: 5
+  username: user
+  password:
+
+test: &TEST
+  adapter: postgresql
+  encoding: utf8
+  database: project_test
+  pool: 5
+  username: user
+  password:
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: d31ribqih6711o
+  pool: 5
+  username: bokfuhmmuejqjr
+  password: yxoXRLVe_a4zFmucT0MjdACR3A

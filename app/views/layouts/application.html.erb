@@ -9,29 +9,36 @@
    <%= csrf_meta_tags %>
 </head>
 <body>
-<div class = "col-sm-12">
-<div class="page-header">
-  <h1>Prestigio Task Planning System</h1>
-  <div class="well well-sm text-center">
-    <% if user_signed_in? %>
-      Logged as <b><%= current_user.first_name + " " + current_user.last_name %></b>,
-      <%= link_to('click to logout', destroy_user_session_path, :method => :delete) %>
-    <% else %>
-      <%= link_to('Login', new_user_session_path)  %>
+  <div class = "col-sm-12">
+    <div class="page-header">
+      <h1>Prestigio Task Planning System</h1>
+      <div class="well well-sm text-center">
+        <% if user_signed_in? %>
+          Logged as <b><%= current_user.first_name + " " + current_user.last_name %></b>,
+          <%= link_to('click to logout', destroy_user_session_path, :method => :delete) %>
+        <% else %>
+          <%= link_to('Login', new_user_session_path)  %>
+        <% end %>
+      </div>
+    </div>
+    <% if flash[:notice] %>
+    <div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:notice] %></div>
     <% end %>
+    <% if flash[:error] %>
+    <div class="alert alert-error"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:error] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+    <div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:alert] %></div>
+    <% end %>
+    <%= yield %>
+    <br><br>
   </div>
-</div>
-<% if flash[:notice] %>
-<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:notice] %></div>
-<% end %>
-<% if flash[:error] %>
-<div class="alert alert-error"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:error] %></div>
-<% end %>
-<% if flash[:alert] %>
-<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= flash[:alert] %></div>
-<% end %>
-<%= yield %>
-</div>
 
+  <div class="text-center">
+    <div class = "col-sm-12">
+      <div class = "well well-sm">Prestigio Task System - Copyright by  <b>Alexey Levashev</b> &copy; 2015-2017</div>
+    </div>
+  </div>
 </body>
+
 </html>

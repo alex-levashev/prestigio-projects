@@ -48,7 +48,7 @@ class TasksController < ApplicationController
               :id => event.id,
               :start_date => event.starttime.to_formatted_s(:db),
               :end_date => event.endtime.to_formatted_s(:db),
-              :text => event.label
+              :text => event.assignee_from_id_to_name + " - " + event.label
           }}
 
   end
@@ -99,31 +99,5 @@ class TasksController < ApplicationController
       params.require(:task).permit(:tasktype, :label, :text, :assignee, :starttime, :endtime)
     end
 
-    def json_payload
-      {
-    "timeline" =>
-    {
-        "headline"=>"Prestigio Task System Timeline",
-        "type"=>"default",
-        "text"=>"<p>Simple task tracking system</p>",
-        "date"=> @tasks.map { |task|
-          {
-            "startDate" => task.starttime.strftime("%Y,%m,%d,%H,%M"),
-            "endDate" => task.endtime.strftime("%Y,%m,%d,%H,%M"),
-            "headline" => task.assignee_from_id_to_name + '  (' + task.label + ')',
-            "text" => task.text
-          }
-        },
-
-        "era"=> [
-            {
-                "startDate"=>"2016,01,01",
-                "endDate"=>"2017,01,01"
-            }
-
-        ]
-    }
-}
-    end
 
 end

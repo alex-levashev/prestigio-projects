@@ -56,27 +56,25 @@ class TasksController < ApplicationController
   def db_action
      mode = params["!nativeeditor_status"]
      id = params["id"]
-     start_date = params["starttime"]
-     end_date = params["endtime"]
+     start_date = params["start_date"]
+     end_date = params["end_date"]
      text = params["label"]
 
      case mode
        when "inserted"
-         event = Task.create :start_date => start_date,
-                             :end_date => end_date,
-                             :text => text,
-                             :tasktype => 'test_tasktype',
-                             :label => 'test_label'
-         tid = event.id
+         event = Task.create :starttime => start_date,
+                             :endtime => end_date,
+                             :text => text
 
+         tid = event.id
        when "deleted"
          Task.find(id).destroy
          tid = id
 
        when "updated"
          event = Task.find(id)
-         event.start_date = start_date
-         event.end_date = end_date
+         event.starttime = start_date
+         event.endtime = end_date
          event.text = text
          event.save
          tid = id

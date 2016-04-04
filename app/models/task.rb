@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :user
   validate :check_user_availability
+  before_save :weekend_check
 
   def author_from_id_to_name
     id = self.user_id
@@ -27,5 +28,11 @@ class Task < ActiveRecord::Base
       end
     end
     return true
+  end
+
+  def weekend_check
+    timerange = (self.starttime.to_datetime..self.endtime.to_datetime)
+    byebug
+    self.endtime = self.endtime + timerange.find_all{|date| [0, 6, 7].include?(date.wday)}.count.day
   end
 end

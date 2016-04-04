@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  match "tasks/db_action", :to => "tasks#db_action", :as => "db_action", via: [:get, :post]
   match "tasks/data", :to => "tasks#data", :as => "data", :via => "get"
-  match "tasks/db_action", :to => "tasks#db_action", :as => "db_action", :via => "post"
+
 
   devise_for :users
   resources :tasks

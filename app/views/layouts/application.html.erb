@@ -15,7 +15,7 @@
       <div class="well well-sm text-center">
         <% if user_signed_in? %>
           Logged as <b><%= current_user.first_name + " " + current_user.last_name %></b>
-          <a class="btn btn-primary" href="<%= tasks_path %>"><i class="glyphicon glyphicon-home"></i></a>
+          <a class="btn btn-primary" href="<%= tasks_path %>"><i class="glyphicon glyphicon-home style="color:red"></i></a>
           <div class="btn btn-primary"><%= link_to('click to logout', destroy_user_session_path, :method => :delete) %></div>
           <% if current_user.admin %>
         <br> You are logged as administrator, you can manage user <%= link_to 'here', users_path %>

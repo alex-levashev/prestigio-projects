@@ -43,14 +43,13 @@ class TasksController < ApplicationController
   end
 
   def data
-   events = Task.all
+     events = Task.all
    render :json => events.map {|event| {
               :id => event.id,
               :start_date => event.starttime.to_formatted_s(:db),
-              :end_date => event.endtime.to_formatted_s(:db),
+              :end_date => (event.endtime+1.day).to_formatted_s(:db),
               :text => event.assignee_from_id_to_name + " - " + event.label
           }}
-
   end
 
   def db_action

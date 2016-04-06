@@ -26,12 +26,12 @@
 
     <div class="field">
       <%= f.label :email, class: "col-md-2 control-label"  %>
-      <div class="col-md-10"><%= f.text_field :email, class: "form-control", type: "email", :required => true %><br></div>
+      <div class="col-md-10"><%= f.email_field :email, class: "form-control", :required => true %><br></div>
     </div>
 
     <div class="field">
       <%= f.label :password, class: "col-md-2 control-label"  %>
-      <div class="col-md-10"><%= f.text_field :password, class: "form-control", :required => true, type: "password" %><br></div>
+      <div class="col-md-10"><%= f.password_field :password, class: "form-control", :required => true %><br></div>
     </div>
 
     <div class="field">

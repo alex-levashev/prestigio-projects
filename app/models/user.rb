@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :tasks, dependent: :destroy
+  scope :activated, -> { where(activated: true) }
 
   def alltasks
     user = self.id

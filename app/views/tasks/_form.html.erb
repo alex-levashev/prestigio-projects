@@ -31,7 +31,7 @@
 
   <div class="field">
     <%= f.label :assignee, class: "col-md-2 control-label" %>
-    <div class="col-md-10"><%= f.collection_select :assignee, User.all, :id, :last_name, {prompt: "Select assignee"}, {class: "form-control", :required => true} %><br></div>
+    <div class="col-md-10"><%= f.collection_select :assignee, User.activated, :id, :last_name, {prompt: "Select assignee"}, {class: "form-control", :required => true} %><br></div>
   </div>
 
   <div class="field">

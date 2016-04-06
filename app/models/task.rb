@@ -22,9 +22,11 @@ class Task < ActiveRecord::Base
     timerange = (self.starttime.to_datetime..self.endtime.to_datetime)
     User.find_by_id(id).alltasks.each do |task|
       timerange_user = task.starttime.to_datetime..task.endtime.to_datetime
-      if timerange_user.include?(timerange)
-        errors.add(:user, "is busy. Change start and end time for the task")
-        return false
+      if task.id != self.id
+        if timerange_user.overlaps?(timerange)
+          errors.add(:user, "is busy. Change start and end time for the task")
+          return false
+        end
       end
     end
     return true

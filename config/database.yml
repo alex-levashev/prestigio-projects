@@ -29,18 +29,18 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: project_development
+  database: prestigio_dev
   pool: 5
   username: user
-  password: 
+  password:
 
 test: &TEST
   adapter: postgresql
   encoding: utf8
-  database: project_test
+  database: prestigio_test
   pool: 5
   username: user
-  password: 
+  password:
 
 production:
   adapter: postgresql

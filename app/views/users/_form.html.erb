@@ -44,6 +44,11 @@
       <div class="col-md-10"><%= f.check_box :admin, class: "form-control" %><br></div>
     </div>
 
+    <div class="field">
+      <%= f.label :activated, class: "col-md-2 control-label"  %>
+      <div class="col-md-10"><%= f.check_box :activated, class: "form-control" %><br></div>
+    </div>
+
       <%= f.submit class: 'btn btn-primary btn-group' %>
 
       <% end %>

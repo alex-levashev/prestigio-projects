@@ -7,6 +7,7 @@
       t.string :password
       t.string :role
       t.boolean :admin
+      t.boolean :activated
 
       t.timestamps null: false
     end

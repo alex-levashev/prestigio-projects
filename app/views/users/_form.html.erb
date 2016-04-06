@@ -1,4 +1,4 @@
-<%= form_for @user, url: {action: "create"}, html: {class: "form-horizontal center"} do |f| %>
+<%= form_for @user, html: {class: "form-horizontal center"} do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -11,7 +11,7 @@
       </ul>
     </div>
   <% end %>
-  
+
 <div class="form-group">
 
     <div class="field">
@@ -44,9 +44,6 @@
       <div class="col-md-10"><%= f.check_box :admin, class: "form-control" %><br></div>
     </div>
 
-
-    
-      <%= f.submit "Create", class: 'btn btn-primary btn-group' %>
-     
+      <%= f.submit class: 'btn btn-primary btn-group' %>
 
       <% end %>

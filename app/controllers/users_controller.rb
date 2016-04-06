@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    respond_with(@user)
+    redirect_to users_path
   end
 
   def destroy

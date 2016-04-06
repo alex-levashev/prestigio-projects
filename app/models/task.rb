@@ -32,7 +32,6 @@ class Task < ActiveRecord::Base
 
   def weekend_check
     timerange = (self.starttime.to_datetime..self.endtime.to_datetime)
-    byebug
     self.endtime = self.endtime + timerange.find_all{|date| [0, 6, 7].include?(date.wday)}.count.day
   end
 end

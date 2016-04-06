@@ -14,12 +14,19 @@
       <h1>Prestigio Task Planning System</h1>
       <div class="well well-sm text-center">
         <% if user_signed_in? %>
-          Logged as <b><%= current_user.first_name + " " + current_user.last_name %></b>
+          Logged as <b><%= current_user.first_name + " " + current_user.last_name %></b><br>
           <a class="btn btn-primary" href="<%= tasks_path %>"><i class="glyphicon glyphicon-home"></i></a>
+<<<<<<< HEAD
           <div class="btn btn-primary"><%= link_to('<i class="glyphicon glyphicon-home white"></i>'.html_safe, destroy_user_session_path, :method => :delete) %></div>
             <% if current_user.admin %>
             <br> You are logged as administrator, you can manage user <%= link_to 'here', users_path %>
             <% end %>
+=======
+          <%= link_to('<i class="glyphicon glyphicon-log-out"></i>'.html_safe, destroy_user_session_path, :method => :delete, :class => "btn btn-danger") %>
+          <% if current_user.admin %>
+          <%= link_to('<i class="glyphicon glyphicon-wrench"></i>'.html_safe, users_path, :class => "btn btn-primary") %>
+        <% end %>
+>>>>>>> 6e773299b46341154d42816ce9b726d332408794
         <% else %>
           <%= link_to('Login', new_user_session_path)  %>
         <% end %>

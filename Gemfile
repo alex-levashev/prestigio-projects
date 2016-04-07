@@ -24,13 +24,17 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
-gem 'will_paginate'
+# gem 'will_paginate'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 
 gem 'pg'
 
 gem 'rails_12factor'
+
+
+
+
 
 
 
@@ -47,6 +51,8 @@ gem 'rails_12factor'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem "rspec-rails"
+  gem 'factory_girl_rails'
 end
 
 group :development do

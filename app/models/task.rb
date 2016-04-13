@@ -15,6 +15,10 @@ class Task < ActiveRecord::Base
     user.first_name + " " + user.last_name
   end
 
+  def project_link(name)
+    Redminer.redmine_link(name)
+  end
+
   private
 
   def check_user_availability

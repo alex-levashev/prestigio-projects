@@ -20,6 +20,12 @@
     scheduler.config.xml_date="%Y-%m-%d %H:%i";
     scheduler.init("scheduler_here","","month");
     scheduler.load("<%= data_path %>", "json");
+
+    scheduler.attachEvent("onClick", function (id, e){
+      window.location = ("/tasks/"+id);
+       return true;
+     });
+
     var dp = new dataProcessor("<%= db_action_path %>");
         dp.init(scheduler);
         dp.setTransactionMode("GET", false);

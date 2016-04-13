@@ -1,32 +1,46 @@
-<p>
-  <strong>Type:</strong>
-  <%= @task.tasktype %>
-</p>
+<table class="table">
 
-<p>
-  <strong>Label:</strong>
-  <%= @task.label %>
-</p>
+  <tr>
+    <td><strong>Type:</strong></td>
+    <td><%= @task.tasktype %></td>
+  </tr>
 
-<p>
-  <strong>Text:</strong>
-  <%= @task.text %>
-</p>
+  <tr>
+    <td><strong>Projet:</strong></td>
+    <td><%= @task.label %></td>
+  </tr>
 
-<p>
-  <strong>Assignee:</strong>
-  <%= @task.assignee %>
-</p>
+  <tr>
+    <td><strong>Note:</strong></td>
+    <td><%= @task.text %></td>
+  </tr>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @task.starttime.strftime('%Y-%m-%d') %>
-</p>
+  <tr>
+    <td><strong>Author:</strong></td>
+    <td><%= @task.author_from_id_to_name %></td>
+  </tr>
 
-<p>
-  <strong>End time:</strong>
-  <%= @task.endtime.strftime('%Y-%m-%d') %>
-</p>
+  <tr>
+    <td><strong>Assignee:</strong></td>
+    <td><%= @task.assignee_from_id_to_name %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Start time:</strong></td>
+    <td><%= @task.starttime.strftime('%Y-%m-%d') %></td>
+  </tr>
+
+  <tr>
+    <td><strong>End time:</strong></td>
+    <td><%= @task.endtime.strftime('%Y-%m-%d') %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Redmine link:</strong></td>
+    <td><%= link_to 'Open project in Redmine', @task.project_link(@task.label), :class => "btn btn-primary btn-success btn-xs", :target => "_blank" %></td>
+  </tr>
+</table>
+<br>
 
 <div class="col-md-12 text-center">
   <div class = "btn-group btn-group-justified">

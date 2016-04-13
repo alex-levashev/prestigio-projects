@@ -33,4 +33,9 @@ class Redminer < ActiveRecord::Base
       end
   end
 
+  def self.redmine_link(name)
+    project = find_by_redmine_project_name(name)
+    "http://tracker.prestigio.com/projects/#{project.redmine_id}"
+  end
+
 end

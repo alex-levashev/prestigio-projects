@@ -34,7 +34,7 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    respond_with(@task)
+    redirect_to tasks_path
   end
 
   def destroy
@@ -44,12 +44,25 @@ class TasksController < ApplicationController
 
   def data
      events = Task.all
-   render :json => events.map {|event| {
+
+
+  events_json = events.map {|event|
+  if event.done
+    color = 'green'
+  else
+    color = 'red'
+  end
+              {
               :id => event.id,
               :start_date => event.starttime.to_formatted_s(:db),
               :end_date => (event.endtime+1.day).to_formatted_s(:db),
-              :text => event.assignee_from_id_to_name + " - " + event.label
-          }}
+              :text => event.assignee_from_id_to_name + " - " + event.tasktype + " - " + event.label,
+              :color => color
+              }
+
+            }
+    render :json => events_json
+
   end
 
   def db_action
@@ -88,6 +101,7 @@ class TasksController < ApplicationController
 
    def redmine_update
      Redminer.redmine_projects
+     flash[:notice] = "Project list was updated!"
      redirect_to tasks_path
    end
 
@@ -98,7 +112,7 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:tasktype, :label, :text, :assignee, :starttime, :endtime)
+      params.require(:task).permit(:tasktype, :label, :text, :assignee, :starttime, :endtime, :done)
     end
 
 

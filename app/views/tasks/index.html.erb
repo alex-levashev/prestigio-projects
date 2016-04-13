@@ -37,6 +37,7 @@
       <th class="text-center">Assignee</th>
       <th class="text-center">Start Date</th>
       <th class="text-center">End Date</th>
+      <th class="text-center">Status</th>
       <th class="text-center" colspan="3">Actions</th>
     </tr>
   </thead>
@@ -51,6 +52,13 @@
         <td><%= task.assignee_from_id_to_name %></td>
         <td><%= task.starttime.strftime('%Y-%m-%d') %></td>
         <td><%= task.endtime.strftime('%Y-%m-%d') %></td>
+        <td class = "text-center">
+          <% if task.done %>
+          <span class="label label-success">Done</span>
+          <% else %>
+          <span class="label label-default">Processed</span>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', task, :class => "btn btn-primary btn-xs" %></td>
         <td><%= link_to 'Edit', edit_task_path(task), :class => "btn btn-primary btn-xs" %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs" %></td>

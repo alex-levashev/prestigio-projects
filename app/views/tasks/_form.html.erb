@@ -20,7 +20,7 @@
   <div class="form-group field">
     <%= f.label :label, class: "col-md-2 control-label" %>
     <div class="col-md-10">
-      <%= f.collection_select :label, Redminer.child, :redmine_project_name, :redmine_project_name, {prompt: "Select project"}, {class: "select form-control chosen-select", :required => true} %></div>
+      <%= f.collection_select :label, Redminer.child, :redmine_project_name, :redmine_project_name, {prompt: "Select project"}, {class: "chosen-select", :required => true} %></div>
   </div>
 
   <div class="form-group field">

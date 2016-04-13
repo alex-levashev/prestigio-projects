@@ -86,6 +86,11 @@ class TasksController < ApplicationController
             }
    end
 
+   def redmine_update
+     Redminer.redmine_projects
+     redirect_to tasks_path
+   end
+
 
   private
     def set_task

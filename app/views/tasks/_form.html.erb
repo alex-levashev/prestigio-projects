@@ -12,38 +12,39 @@
     </div>
   <% end %>
 
-<div class="form-group">
-
-  <div class="field">
+  <div class="form-group field">
     <%= f.label :tasktype, class: "col-md-2 control-label" %>
-    <div class="col-md-10"><%= f.text_field :tasktype, class: "form-control", :required => true %><br></div>
+    <div class="col-md-10"><%= f.text_field :tasktype, class: "form-control", :required => true %></div>
   </div>
 
-  <div class="field">
+  <div class="form-group field">
     <%= f.label :label, class: "col-md-2 control-label" %>
-    <div class="col-md-10"><%= f.text_field :label, class: "form-control", :required => true %><br></div>
+    <div class="col-md-10">
+      <%= f.collection_select :label, Redminer.child, :redmine_project_name, :redmine_project_name, {prompt: "Select project"}, {class: "select form-control chosen-select", :required => true} %></div>
   </div>
 
-  <div class="field">
+  <div class="form-group field">
     <%= f.label :text, class: "col-md-2 control-label" %>
-    <div class="col-md-10"><%= f.text_field :text, class: "form-control", :required => true %><br></div>
+    <div class="col-md-10"><%= f.text_field :text, class: "form-control", :required => true %></div>
   </div>
 
-  <div class="field">
+  <div class="form-group field">
     <%= f.label :assignee, class: "col-md-2 control-label" %>
-    <div class="col-md-10"><%= f.collection_select :assignee, User.activated, :id, :last_name, {prompt: "Select assignee"}, {class: "form-control", :required => true} %><br></div>
+    <div class="col-md-10"><%= f.collection_select :assignee, User.activated, :id, :last_name, {prompt: "Select assignee"}, {class: "form-control", :required => true} %></div>
   </div>
 
-  <div class="field">
+  <div class="form-group field">
     <%= f.label :starttime, class: "col-md-2 control-label" %>
-    <div class="col-md-10"><%= f.date_field :starttime, :value => Time.now.strftime('%Y-%m-%d'), class: "form-control", :required => true %><br></div>
+    <div class="col-md-10"><%= f.date_field :starttime, :value => Time.now.strftime('%Y-%m-%d'), class: "form-control", :required => true %></div>
   </div>
 
-  <div class="field">
+  <div class="form-group field">
     <%= f.label :endtime, class: "col-md-2 control-label" %>
     <div class="col-md-10"><%= f.date_field :endtime, :value => Time.now.strftime('%Y-%m-%d'), class: "form-control", :required => true %><br></div>
   </div>
 
-    <%= f.submit class: 'btn btn-primary btn-group' %>
+<div class="btn-group">
+
+  <%= f.submit class: 'btn btn-primary' %>
 
 <% end %>

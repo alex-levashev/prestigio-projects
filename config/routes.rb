@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   match "tasks/db_action", :to => "tasks#db_action", :as => "db_action", via: [:get, :post]
   match "tasks/data", :to => "tasks#data", :as => "data", :via => "get"
+  get "tasks/redmine_update" => "tasks#redmine_update", :as => :redmine_update
 
 
   devise_for :users

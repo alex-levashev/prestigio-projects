@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325205209) do
+ActiveRecord::Schema.define(version: 20160412105928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "redminers", force: :cascade do |t|
+    t.string "redmine_id"
+    t.string "redmine_project_name"
+    t.string "redmine_parent_id"
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "user_id"

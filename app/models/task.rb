@@ -1,7 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :user
   validate :check_user_availability
-  before_save :weekend_check
+  # before_save :weekend_check
 
   def author_from_id_to_name
     id = self.user_id

@@ -32,7 +32,7 @@ gem 'rails_12factor'
 
 gem 'nokogiri'
 gem 'chosen-rails'
-
+gem "smart_listing"
 
 
 # Use ActiveModel has_secure_password

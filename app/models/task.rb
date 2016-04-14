@@ -22,7 +22,7 @@ class Task < ActiveRecord::Base
   end
 
   def task_overdue
-    self.endtime >= Date.today && self.done != true
+    self.endtime < Date.today && self.done != true
   end
 
   private

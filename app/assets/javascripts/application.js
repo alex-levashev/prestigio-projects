@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require chosen-jquery
 //= require tasks.coffee
+//= require smart_listing
 //= require_tree .

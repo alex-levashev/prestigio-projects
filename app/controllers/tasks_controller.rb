@@ -49,8 +49,10 @@ class TasksController < ApplicationController
   events_json = events.map {|event|
   if event.done
     color = 'green'
-  else
+  elsif event.task_overdue
     color = 'red'
+  else
+    color = 'blue'
   end
               {
               :id => event.id,

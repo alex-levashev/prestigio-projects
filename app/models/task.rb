@@ -1,6 +1,8 @@
 class Task < ActiveRecord::Base
   belongs_to :user
   validate :check_user_availability
+  validates :starttime, presence: true
+  validates :endtime, presence: true
   # before_save :weekend_check
 
   def author_from_id_to_name

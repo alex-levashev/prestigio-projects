@@ -1,6 +1,6 @@
 <h1>Listing Tasks</h1>
 
- <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:1000px;'>
+ <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:700px;'>
     <div class="dhx_cal_navline">
       <div class="dhx_cal_prev_button text-center"><</div>
       <div class="dhx_cal_next_button text-center">></div>
@@ -16,6 +16,7 @@
     scheduler.config.readonly = true;
     scheduler.config.first_hour = 8;
     scheduler.config.last_hour = 17;
+    scheduler.config.container_autoresize = true;
     scheduler.config.start_on_monday = true;
     scheduler.config.xml_date="%Y-%m-%d %H:%i";
     scheduler.init("scheduler_here","","month");

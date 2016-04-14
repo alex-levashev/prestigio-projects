@@ -51,7 +51,13 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.tasktype %></td>
+        <td>
+          <% if task.task_overdue %>
+          <span class="label label-danger"><%= task.tasktype %></span>
+          <% else %>
+          <span class="label label-success"><%= task.tasktype %></span>
+          <% end %>
+        </td>
         <td><%= task.label %></td>
         <td><%= task.text %></td>
         <td><%= task.author_from_id_to_name %></td>
@@ -60,7 +66,7 @@
         <td><%= task.endtime.strftime('%Y-%m-%d') %></td>
         <td class = "text-center">
           <% if task.done %>
-          <span class="label label-success">Done</span>
+          <span class="label label-success ">Done</span>
           <% else %>
           <span class="label label-default">Processed</span>
           <% end %>

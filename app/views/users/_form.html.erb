@@ -12,43 +12,44 @@
     </div>
   <% end %>
 
-<div class="form-group">
-
-    <div class="field">
+    <div class="form-group field">
       <%= f.label :first_name, class: "col-md-2 control-label" %>
-      <div class="col-md-10"><%= f.text_field :first_name, class: "form-control", :required => true %><br></div>
+      <div class="col-md-10"><%= f.text_field :first_name, class: "form-control", :required => true %></div>
     </div>
 
-    <div class="field">
+    <div class="form-group field">
       <%= f.label :last_name, class: "col-md-2 control-label"  %>
-      <div class="col-md-10"><%= f.text_field :last_name, class: "form-control", :required => true%><br></div>
+      <div class="col-md-10"><%= f.text_field :last_name, class: "form-control", :required => true%></div>
     </div>
 
-    <div class="field">
+    <div class="form-group field">
       <%= f.label :email, class: "col-md-2 control-label"  %>
-      <div class="col-md-10"><%= f.email_field :email, class: "form-control", :required => true %><br></div>
+      <div class="col-md-10"><%= f.email_field :email, class: "form-control", :required => true %></div>
     </div>
 
-    <div class="field">
+    <div class="form-group field">
       <%= f.label :password, class: "col-md-2 control-label"  %>
-      <div class="col-md-10"><%= f.password_field :password, class: "form-control", :required => true %><br></div>
+      <div class="col-md-10"><%= f.password_field :password, class: "form-control" %></div>
     </div>
 
-    <div class="field">
+    <div class="form-group field">
       <%= f.label :role, class: "col-md-2 control-label"  %>
-      <div class="col-md-10"><%= f.select :role, ["CZ","CN"], {prompt: "Select team"}, {class: "form-control", :required => true}%><br></div>
+      <div class="col-md-10"><%= f.select :role, ["CZ","CN"], {prompt: "Select team"}, {class: "form-control", :required => true}%></div>
     </div>
 
-    <div class="field">
+    <div class="form-group field">
       <%= f.label :admin, class: "col-md-2 control-label"  %>
-      <div class="col-md-10"><%= f.check_box :admin, class: "form-control" %><br></div>
+      <div class="col-md-10"><%= f.check_box :admin, class: "form-control" %></div>
     </div>
 
-    <div class="field">
+    <div class="form-group field">
       <%= f.label :activated, class: "col-md-2 control-label"  %>
-      <div class="col-md-10"><%= f.check_box :activated, class: "form-control" %><br></div>
+      <div class="col-md-10"><%= f.check_box :activated, class: "form-control" %></div>
     </div>
 
-      <%= f.submit class: 'btn btn-primary btn-group' %>
+  <div class="col-sm-4 text-center"></div>
+  <div class="col-sm-4 text-center">
+    <div class="btn-group">
+        <%= f.submit class: 'btn btn-primary' %>
 
       <% end %>

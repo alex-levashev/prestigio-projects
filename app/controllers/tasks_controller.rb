@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   respond_to :html
 
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order('endtime DESC').paginate(:page => params[:page], :per_page => 15)
     respond_with(@tasks)
   end
 

@@ -51,7 +51,11 @@
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
+      <% if task.todays_task %>
+          <tr class="info">
+      <% else %>
+          <tr>
+      <% end %>
         <td>
           <% if task.task_overdue %>
           <span class="label label-danger"><%= task.tasktype %></span>
@@ -79,7 +83,7 @@
     <% end %>
   </tbody>
 </table>
-
+<div class = "text-center"><%= will_paginate @tasks, renderer: BootstrapPagination::Rails %></div>
 <br>
 
 <%= link_to 'New Task', new_task_path, :class => "btn btn-primary" %>

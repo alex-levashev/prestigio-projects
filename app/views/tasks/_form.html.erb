@@ -1,4 +1,4 @@
-<%= form_for @task, html: {class: "form-horizontal center"} do |f| %>
+<%= form_for @task, html: { class: "form-horizontal center"} do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -14,8 +14,11 @@
 
   <div class="form-group field">
     <%= f.label "Task type", class: "col-md-2 control-label" %>
-    <div class="col-md-10"><%= f.select :tasktype, [["Firmware test", "FW"], ["Hardware Test", "HW"], ["Other", "Other"]], {}, {class: "chosen-select", :required => true} %></div>
-    <!-- <%= f.text_field :tasktype, class: "form-control", :required => true %> -->
+    <div class="col-md-10"><%= f.select :tasktype, [["Firmware test", "FW"],
+                                                    ["Hardware Test", "HW"],
+                                                    ["Other", "Other"]],
+                                                    {}, {class: "chosen-select" } %>
+    </div>
   </div>
 
   <div class="form-group field">
@@ -24,7 +27,8 @@
       <%= f.collection_select :label, Redminer.child, :redmine_project_name,
                                                       :redmine_project_name,
                                                       {prompt: "Select project"},
-                                                      {class: "chosen-select", :required => true} %></div>
+                                                      {class: "chosen-select"} %>
+    </div>
   </div>
 
   <div class="form-group field">
@@ -34,17 +38,18 @@
 
   <div class="form-group field">
     <%= f.label :assignee, class: "col-md-2 control-label" %>
-    <div class="col-md-10"><%= f.collection_select :assignee, User.activated, :id, :last_name, {prompt: "Select assignee"}, {class: "chosen-select", :required => true} %></div>
+    <div class="col-md-10"><%= f.collection_select :assignee, User.activated, :id, :last_name,
+                  {prompt: "Select assignee"}, {class: "chosen-select"} %></div>
   </div>
 
   <div class="form-group field">
     <%= f.label :starttime, class: "col-md-2 control-label" %>
-    <div class="col-md-10"><%= f.date_field :starttime, class: "form-control", :required => true %></div>
+    <div class="col-md-10"><%= f.date_field :starttime, class: "form-control" %></div>
   </div>
 
   <div class="form-group field">
     <%= f.label :endtime, class: "col-md-2 control-label" %>
-    <div class="col-md-10"><%= f.date_field :endtime, class: "form-control", :required => true %><br></div>
+    <div class="col-md-10"><%= f.date_field :endtime, class: "form-control" %><br></div>
   </div>
 
   <div class="form-group field">

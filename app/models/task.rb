@@ -1,8 +1,18 @@
 class Task < ActiveRecord::Base
   belongs_to :user
-  validate :check_user_availability
+
+  validates :tasktype, presence: true
+  validates :label, presence: true
+  validates :assignee, presence: true
   validates :starttime, presence: true
   validates :endtime, presence: true
+
+  validate :check_user_availability, if: :check_user_availability_conditions
+
+  def check_user_availability_conditions
+    assignee.present? && starttime.present? && endtime.present?
+  end
+
   # before_save :weekend_check
 
   def author_from_id_to_name
@@ -23,6 +33,10 @@ class Task < ActiveRecord::Base
 
   def task_overdue
     self.endtime < Date.today && self.done != true
+  end
+
+  def todays_task
+    (self.starttime..self.endtime).cover?(Date.today)
   end
 
   private

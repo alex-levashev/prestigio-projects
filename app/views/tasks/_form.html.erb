@@ -24,9 +24,9 @@
   <div class="form-group field">
     <%= f.label :label, class: "col-md-2 control-label" %>
     <div class="col-md-10">
-      <%= f.collection_select :label, Redminer.child, :redmine_project_name,
+      <%= f.collection_select :label, Redminer.all, :redmine_project_name,
                                                       :redmine_project_name,
-                                                      {prompt: "Select project"},
+                                                      {prompt: "Select project..."},
                                                       {class: "chosen-select"} %>
     </div>
   </div>

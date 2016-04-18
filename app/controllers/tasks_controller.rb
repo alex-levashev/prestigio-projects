@@ -45,7 +45,6 @@ class TasksController < ApplicationController
   def data
      events = Task.all
 
-
   events_json = events.map {|event|
   if event.done
     color = 'green'

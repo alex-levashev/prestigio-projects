@@ -31,6 +31,15 @@ class Redminer < ActiveRecord::Base
           end
         offset = offset + limit
       end
+    real = Redminer.all.select { |project| !Redminer.exists?(redmine_parent_id: project.redmine_id) }
+    Redminer.delete_all
+    real.each do |t|
+      redmine = new
+      redmine.redmine_id = t.redmine_id
+      redmine.redmine_project_name = t.redmine_project_name
+      redmine.redmine_parent_id = t.redmine_parent_id
+      redmine.save
+    end
   end
 
   def self.redmine_link(name)

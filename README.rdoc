@@ -1,5 +1,5 @@
 == README
 
-Simple Task Planner for distributed teams
+Simple Task Planner for distributed teams.
 
 Predesigned for Prestigio Europe Development Team

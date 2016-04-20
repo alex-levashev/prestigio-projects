@@ -1,5 +1,5 @@
 == README
 
-Simple Task Planner for Team Leads of distributed team
+Simple Task Planner
 
 Predesigned for Prestigio Europe Development Team
